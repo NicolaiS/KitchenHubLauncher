@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">KitchenHub Launcher</string>
+
+    <string name="tab_info">Info</string>
+    <string name="tab_config">Config</string>
+    <string name="tab_colors">Colors</string>
+
+    <string name="config_data_sources">Data Sources</string>
+    <string name="config_containers">Containers</string>
+
+    <string name="error_not_ip">Please enter a valid IP.</string>
+    <string name="error_name">Please enter the name of the container.</string>
+    <string name="error_dsc_one">The data source and antenna is already linked to another container</string>
+    <string name="error_dsc_two">This container is already linked to another data source</string>
+
+    <string name="ass_ds">Associated Data Sources</string>
+
+    <string name="container_combined">Combined</string>
+
+    <string name="reader_llrp">LLRP compatible</string>
+    <string name="reader_alien">Alien Technology</string>
+
+    <string name="container_refrigerated">Refrigerated</string>
+    <string name="container_freezer">Freezer</string>
+    <string name="container_living_room_temp">Living room temperature</string>
+
+    <string name="hint_name">Name</string>
+    <string name="hint_ip">IP Address</string>
+
+    <string name="warning">Warning!</string>
+
+    <string name="home_notifications">Notifications</string>
+
+    <string name="recalled">Recalled</string>
+    <string name="recall_title">Product Recall</string>
+    <string name="recall_product">Product</string>
+    <string name="recall_issue_date">Issue Date</string>
+    <string name="recall_description">Description</string>
+    <string name="recall_danger">Danger</string>
+    <string name="recall_instructions">Instructions</string>
+    <string name="recall_button">Understood</string>
+
+    <string name="recall_warn_top">Product Recalled:</string>
+    <string name="recall_warn_button">More Information</string>
+
+    <string name="unknown">Unknown</string>
+</resources>

@@ -1,0 +1,299 @@
+<resources>
+
+    <style name="KH.Theme.Dark.Red">
+        <item name="color_primary">@color/red500</item>
+    </style>
+
+    <style name="KH.Theme.Light.Red">
+        <item name="color_primary">@color/red500</item>
+    </style>
+
+    <style name="KH.Theme.Dark.Pink">
+        <item name="color_primary">@color/pink500</item>
+    </style>
+
+    <style name="KH.Theme.Light.Pink">
+        <item name="color_primary">@color/pink500</item>
+    </style>
+
+    <style name="KH.Theme.Dark.Purple">
+        <item name="color_primary">@color/purple500</item>
+    </style>
+
+    <style name="KH.Theme.Light.Purple">
+        <item name="color_primary">@color/purple500</item>
+    </style>
+
+    <style name="KH.Theme.Dark.PurpleDeep">
+        <item name="color_primary">@color/deep_purple500</item>
+    </style>
+
+    <style name="KH.Theme.Light.PurpleDeep">
+        <item name="color_primary">@color/deep_purple500</item>
+    </style>
+
+    <style name="KH.Theme.Dark.Indigo">
+        <item name="color_primary">@color/indigo500</item>
+    </style>
+
+    <style name="KH.Theme.Light.Indigo">
+        <item name="color_primary">@color/indigo500</item>
+    </style>
+
+    <style name="KH.Theme.Dark.Blue">
+        <item name="color_primary">@color/blue500</item>
+    </style>
+
+    <style name="KH.Theme.Light.Blue">
+        <item name="color_primary">@color/blue500</item>
+    </style>
+
+    <style name="KH.Theme.Dark.LightBlue">
+        <item name="color_primary">@color/light_blue500</item>
+    </style>
+
+    <style name="KH.Theme.Light.LightBlue">
+        <item name="color_primary">@color/light_blue500</item>
+    </style>
+
+    <style name="KH.Theme.Dark.Cyan">
+        <item name="color_primary">@color/light_blue500</item>
+    </style>
+
+    <style name="KH.Theme.Light.Cyan">
+        <item name="color_primary">@color/light_blue500</item>
+    </style>
+
+    <style name="KH.Theme.Dark.Teal">
+        <item name="color_primary">@color/teal500</item>
+    </style>
+
+    <style name="KH.Theme.Light.Teal">
+        <item name="color_primary">@color/teal500</item>
+    </style>
+
+    <style name="KH.Theme.Dark.Green">
+        <item name="color_primary">@color/green500</item>
+    </style>
+
+    <style name="KH.Theme.Light.Green">
+        <item name="color_primary">@color/green500</item>
+    </style>
+
+    <style name="KH.Theme.Dark.LightGreen">
+        <item name="color_primary">@color/light_green500</item>
+    </style>
+
+    <style name="KH.Theme.Light.LightGreen">
+        <item name="color_primary">@color/light_green500</item>
+    </style>
+
+    <style name="KH.Theme.Dark.Lime">
+        <item name="color_primary">@color/lime500</item>
+    </style>
+
+    <style name="KH.Theme.Light.Lime">
+        <item name="color_primary">@color/lime500</item>
+    </style>
+
+    <style name="KH.Theme.Dark.Yellow">
+        <item name="color_primary">@color/yellow500</item>
+    </style>
+
+    <style name="KH.Theme.Light.Yellow">
+        <item name="color_primary">@color/yellow500</item>
+    </style>
+
+    <style name="KH.Theme.Dark.Amber">
+        <item name="color_primary">@color/amber500</item>
+    </style>
+
+    <style name="KH.Theme.Light.Amber">
+        <item name="color_primary">@color/amber500</item>
+    </style>
+
+    <style name="KH.Theme.Dark.Orange">
+        <item name="color_primary">@color/orange500</item>
+    </style>
+
+    <style name="KH.Theme.Light.Orange">
+        <item name="color_primary">@color/orange500</item>
+    </style>
+
+    <style name="KH.Theme.Dark.OrangeDeep">
+        <item name="color_primary">@color/orange_deep500</item>
+    </style>
+
+    <style name="KH.Theme.Light.OrangeDeep">
+        <item name="color_primary">@color/orange_deep500</item>
+    </style>
+
+    <style name="KH.Theme.Dark.Brown">
+        <item name="color_primary">@color/brown500</item>
+    </style>
+
+    <style name="KH.Theme.Light.Brown">
+        <item name="color_primary">@color/brown500</item>
+    </style>
+
+    <style name="KH.Theme.Dark.BlueGrey">
+        <item name="color_primary">@color/blue_grey500</item>
+    </style>
+
+    <style name="KH.Theme.Light.BlueGrey">
+        <item name="color_primary">@color/blue_grey500</item>
+    </style>
+
+    <style name="KH.Theme.Dark.Grey">
+        <item name="color_primary">@color/grey500</item>
+    </style>
+
+    <style name="KH.Theme.Light.Grey">
+        <item name="color_primary">@color/grey500</item>
+    </style>
+
+    <style name="KH.Theme.Light">
+        <item name="android:textColor">@color/white</item>
+        <item name="color_base">@color/kh_light</item>
+        <item name="color_base_true">@color/white</item>
+        <item name="color_contrast">@color/kh_dark</item>
+        <item name="color_contrast_true">@color/black</item>
+
+        <item name="android:dialogTheme">@style/KH.Dialog.Light</item>
+
+        <item name="box">@drawable/box_light</item>
+        <item name="box_contrast">@drawable/box_dark</item>
+
+        <item name="background_click_base">@drawable/background_click_base_light</item>
+        <item name="background_click_contrast">@drawable/background_click_base_dark</item>
+
+        <item name="add">@drawable/ic_add_white</item>
+        <item name="add_box">@drawable/ic_add_box_white</item>
+        <item name="add_circle">@drawable/ic_add_circle_white</item>
+        <item name="add_circle_outline">@drawable/ic_add_circle_outline_white</item>
+        <item name="remove">@drawable/ic_remove_white</item>
+        <item name="remove_circle">@drawable/ic_remove_circle_white</item>
+        <item name="remove_circle_outline">@drawable/ic_remove_circle_outline_white</item>
+        <item name="check">@drawable/ic_done_white</item>
+        <item name="check_box">@drawable/ic_check_box_white</item>
+        <item name="check_box_outline">@drawable/ic_check_box_outline_blank_white</item>
+        <item name="check_circle">@drawable/ic_check_circle_white</item>
+        <item name="cancel">@drawable/ic_clear_white</item>
+        <item name="cancel_circle">@drawable/ic_cancel_white</item>
+        <item name="delete">@drawable/ic_delete_white</item>
+        <item name="delete_contrast">@drawable/ic_delete_black</item>
+        <item name="refresh">@drawable/ic_cached_white</item>
+        <item name="home">@drawable/ic_home_white</item>
+        <item name="note_add">@drawable/ic_note_add_white</item>
+        <item name="sort">@drawable/ic_sort_white</item>
+        <item name="settings">@drawable/ic_settings_white</item>
+        <item name="nfc">@drawable/ic_nfc_white_36dp</item>
+        <item name="nfc_contrast">@drawable/ic_nfc_black_36dp</item>
+        <item name="shopping_cart">@drawable/ic_shopping_cart_white</item>
+        <item name="shopping_cart_add">@drawable/ic_add_shopping_cart_white</item>
+        <item name="up">@drawable/up_white</item>
+        <item name="down">@drawable/down_white</item>
+        <item name="right">@drawable/right_white</item>
+        <item name="left">@drawable/left_white</item>
+        <item name="notification">@drawable/ic_notifications_white</item>
+    </style>
+
+    <style name="KH.Theme.Dark">
+        <item name="android:textColor">@color/black</item>
+        <item name="color_base">@color/kh_dark</item>
+        <item name="color_base_true">@color/black</item>
+        <item name="color_contrast">@color/kh_light</item>
+        <item name="color_contrast_true">@color/white</item>
+
+        <item name="android:dialogTheme">@style/KH.Dialog.Dark</item>
+
+        <item name="box">@drawable/box_dark</item>
+        <item name="box_contrast">@drawable/box_light</item>
+
+        <item name="background_click_base">@drawable/background_click_base_dark</item>
+        <item name="background_click_contrast">@drawable/background_click_base_light</item>
+
+        <item name="add">@drawable/ic_add_black</item>
+        <item name="add_box">@drawable/ic_add_box_black</item>
+        <item name="add_circle">@drawable/ic_add_circle_black</item>
+        <item name="add_circle_outline">@drawable/ic_add_circle_outline_black</item>
+        <item name="remove">@drawable/ic_remove_black</item>
+        <item name="remove_circle">@drawable/ic_remove_circle_black</item>
+        <item name="remove_circle_outline">@drawable/ic_remove_circle_outline_black</item>
+        <item name="check">@drawable/ic_done_black</item>
+        <item name="check_box">@drawable/ic_check_box_black</item>
+        <item name="check_box_outline">@drawable/ic_check_box_outline_blank_black</item>
+        <item name="check_circle">@drawable/ic_check_circle_black</item>
+        <item name="cancel">@drawable/ic_clear_black</item>
+        <item name="cancel_circle">@drawable/ic_cancel_black</item>
+        <item name="delete">@drawable/ic_delete_black</item>
+        <item name="delete_contrast">@drawable/ic_delete_white</item>
+        <item name="refresh">@drawable/ic_cached_black</item>
+        <item name="home">@drawable/ic_home_black</item>
+        <item name="note_add">@drawable/ic_note_add_black</item>
+        <item name="sort">@drawable/ic_sort_black</item>
+        <item name="settings">@drawable/ic_settings_black</item>
+        <item name="nfc">@drawable/ic_nfc_black_36dp</item>
+        <item name="nfc_contrast">@drawable/ic_nfc_white_36dp</item>
+        <item name="shopping_cart">@drawable/ic_shopping_cart_black</item>
+        <item name="shopping_cart_add">@drawable/ic_add_shopping_cart_black</item>
+        <item name="up">@drawable/up_black</item>
+        <item name="down">@drawable/down_black</item>
+        <item name="right">@drawable/right_black</item>
+        <item name="left">@drawable/left_black</item>
+        <item name="notification">@drawable/ic_notifications_black</item>
+    </style>
+
+    <style name="KH.Theme" parent="android:Theme.NoTitleBar.Fullscreen">
+        <item name="color_grey">@color/grey600</item>
+
+        <item name="add_alt">@drawable/ic_add_grey600_36dp</item>
+        <item name="add_box_alt">@drawable/ic_add_box_grey600_36dp</item>
+        <item name="add_circle_alt">@drawable/ic_add_circle_grey600_36dp</item>
+        <item name="add_circle_outline_alt">@drawable/ic_add_circle_outline_grey600_36dp</item>
+        <item name="remove_alt">@drawable/ic_remove_grey600_36dp</item>
+        <item name="remove_circle_alt">@drawable/ic_remove_circle_grey600_36dp</item>
+        <item name="remove_circle_outline_alt">@drawable/ic_remove_circle_outline_grey600_36dp
+        </item>
+        <item name="check_alt">@drawable/ic_done_grey600_36dp</item>
+        <item name="check_box_alt">@drawable/ic_check_box_grey600_36dp</item>
+        <item name="check_box_outline_alt">@drawable/ic_check_box_outline_blank_grey600_36dp</item>
+        <item name="check_circle_alt">@drawable/ic_check_circle_grey600_36dp</item>
+        <item name="cancel_alt">@drawable/ic_clear_grey600_36dp</item>
+        <item name="cancel_circle_alt">@drawable/ic_cancel_grey600_36dp</item>
+        <item name="delete_alt">@drawable/ic_delete_grey600_36dp</item>
+        <item name="refresh_alt">@drawable/ic_cached_grey600_36dp</item>
+        <item name="home_alt">@drawable/ic_home_grey600_36dp</item>
+        <item name="note_add_alt">@drawable/ic_note_add_grey600_36dp</item>
+        <item name="sort_alt">@drawable/ic_sort_grey600_36dp</item>
+        <item name="settings_alt">@drawable/ic_settings_grey600_48dp</item>
+        <item name="shopping_cart_alt">@drawable/ic_shopping_cart_grey600_36dp</item>
+        <item name="shopping_cart_add_alt">@drawable/ic_add_shopping_cart_grey600_36dp</item>
+        <item name="up_alt">@drawable/ic_expand_less_grey600_36dp</item>
+        <item name="down_alt">@drawable/ic_expand_more_grey600_36dp</item>
+        <item name="right_alt">@drawable/ic_chevron_right_grey600_36dp</item>
+        <item name="left_alt">@drawable/ic_chevron_left_grey600_36dp</item>
+        <item name="notification_alt">@drawable/ic_notifications_grey600_48dp</item>
+    </style>
+
+    <style name="KH.Dialog.Light" parent="android:Theme.Holo.Light.Dialog">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="KH.Dialog.Dark" parent="android:Theme.Holo.Dialog">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="KH"/>
+
+    <style name="KH.Shadow">
+        <item name="android:background">@drawable/shadow_black10</item>
+        <item name="android:paddingTop">4px</item>
+        <item name="android:paddingBottom">5px</item>
+        <item name="android:paddingRight">5px</item>
+        <item name="android:paddingLeft">6px</item>
+    </style>
+
+</resources>

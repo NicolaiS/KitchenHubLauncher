@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="themeName" format="reference"/>
+    <attr name="color_base" format="reference"/>
+    <attr name="color_base_true" format="reference"/>
+    <attr name="color_contrast" format="reference"/>
+    <attr name="color_contrast_true" format="reference"/>
+    <attr name="color_primary" format="reference"/>
+    <attr name="color_grey" format="reference"/>
+
+    <attr name="box" format="reference"/>
+    <attr name="box_contrast" format="reference"/>
+    <attr name="background_click_base" format="reference"/>
+    <attr name="background_click_contrast" format="reference"/>
+
+    <attr name="add" format="reference"/>
+    <attr name="add_box" format="reference"/>
+    <attr name="add_circle" format="reference"/>
+    <attr name="add_circle_outline" format="reference"/>
+    <attr name="remove" format="reference"/>
+    <attr name="remove_circle" format="reference"/>
+    <attr name="remove_circle_outline" format="reference"/>
+    <attr name="check" format="reference"/>
+    <attr name="check_box" format="reference"/>
+    <attr name="check_box_outline" format="reference"/>
+    <attr name="check_circle" format="reference"/>
+    <attr name="cancel" format="reference"/>
+    <attr name="cancel_circle" format="reference"/>
+    <attr name="delete" format="reference"/>
+    <attr name="delete_contrast" format="reference"/>
+    <attr name="refresh" format="reference"/>
+    <attr name="home" format="reference"/>
+    <attr name="note_add" format="reference"/>
+    <attr name="sort" format="reference"/>
+    <attr name="settings" format="reference"/>
+    <attr name="nfc" format="reference"/>
+    <attr name="nfc_contrast" format="reference"/>
+    <attr name="shopping_cart" format="reference"/>
+    <attr name="shopping_cart_add" format="reference"/>
+    <attr name="up" format="reference"/>
+    <attr name="down" format="reference"/>
+    <attr name="right" format="reference"/>
+    <attr name="left" format="reference"/>
+    <attr name="notification" format="reference"/>
+
+    <attr name="add_alt" format="reference"/>
+    <attr name="add_box_alt" format="reference"/>
+    <attr name="add_circle_alt" format="reference"/>
+    <attr name="add_circle_outline_alt" format="reference"/>
+    <attr name="remove_alt" format="reference"/>
+    <attr name="remove_circle_alt" format="reference"/>
+    <attr name="remove_circle_outline_alt" format="reference"/>
+    <attr name="check_alt" format="reference"/>
+    <attr name="check_box_alt" format="reference"/>
+    <attr name="check_box_outline_alt" format="reference"/>
+    <attr name="check_circle_alt" format="reference"/>
+    <attr name="cancel_alt" format="reference"/>
+    <attr name="cancel_circle_alt" format="reference"/>
+    <attr name="delete_alt" format="reference"/>
+    <attr name="refresh_alt" format="reference"/>
+    <attr name="home_alt" format="reference"/>
+    <attr name="note_add_alt" format="reference"/>
+    <attr name="sort_alt" format="reference"/>
+    <attr name="settings_alt" format="reference"/>
+    <attr name="shopping_cart_alt" format="reference"/>
+    <attr name="shopping_cart_add_alt" format="reference"/>
+    <attr name="up_alt" format="reference"/>
+    <attr name="down_alt" format="reference"/>
+    <attr name="right_alt" format="reference"/>
+    <attr name="left_alt" format="reference"/>
+    <attr name="notification_alt" format="reference"/>
+
+</resources>

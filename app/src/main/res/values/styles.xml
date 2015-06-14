@@ -1,0 +1,27 @@
+<resources>
+
+    <style name="KH.Text.Huge">
+        <item name="android:textSize">48dp</item>
+    </style>
+
+    <style name="KH.Text.Big">
+        <item name="android:textSize">36dp</item>
+    </style>
+
+    <style name="KH.Text.Medium">
+        <item name="android:textSize">28dp</item>
+    </style>
+
+    <style name="KH.Text.Small">
+        <item name="android:textSize">20dp</item>
+    </style>
+
+    <style name="KH.Text.Tiny">
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="KH.Text">
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+</resources>
