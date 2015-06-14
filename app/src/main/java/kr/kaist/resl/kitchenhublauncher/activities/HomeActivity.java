@@ -92,7 +92,7 @@ public class HomeActivity extends FragmentActivity {
 
         // Show themes dialog again if theme was just changed
         if (savedInstanceState != null) {
-            if (savedInstanceState.getBoolean(Constants.KH_ACTION_THEME_CHANGED, false)) {
+            if (savedInstanceState.getBoolean(Constants.BROADCAST_THEME_CHANGED, false)) {
                 showSettingsDialog(true);
             }
         }
@@ -107,7 +107,7 @@ public class HomeActivity extends FragmentActivity {
 
         IntentFilter filter = new IntentFilter();
         filter.addAction(Intent.ACTION_TIME_TICK);
-        filter.addAction(Constants.KH_ACTION_THEME_CHANGED);
+        filter.addAction(Constants.BROADCAST_THEME_CHANGED);
         filter.addAction(Constants.BROADCAST_CONTAINER_CHANGE);
         filter.addAction(KHBroadcasts.PRODUCTS_UPDATED);
         filter.addAction(KHBroadcasts.PRODUCT_INFORMATION_UPDATED);
@@ -125,7 +125,7 @@ public class HomeActivity extends FragmentActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putBoolean(Constants.KH_ACTION_THEME_CHANGED, updateTheme);
+        outState.putBoolean(Constants.BROADCAST_THEME_CHANGED, updateTheme);
     }
 
     @Override
@@ -237,7 +237,7 @@ public class HomeActivity extends FragmentActivity {
             startProductHandler();
             startProductInformation();
             startRecall();
-        } else if (action.equals(Constants.KH_ACTION_THEME_CHANGED)) {
+        } else if (action.equals(Constants.BROADCAST_THEME_CHANGED)) {
             // Apply new theme
             Fragment settingsDialog = getSupportFragmentManager().findFragmentByTag(Constants.SETTINGS_DIALOG);
             if (settingsDialog != null) ((DialogFragment) settingsDialog).dismiss();
@@ -336,7 +336,7 @@ public class HomeActivity extends FragmentActivity {
     public void showSettingsDialog(boolean goToColors) {
         SettingsDialog settingsDialog = new SettingsDialog();
         Bundle bundle = new Bundle();
-        bundle.putBoolean(Constants.KH_ACTION_THEME_CHANGED, goToColors);
+        bundle.putBoolean(Constants.BROADCAST_THEME_CHANGED, goToColors);
         settingsDialog.setArguments(bundle);
         settingsDialog.show(getSupportFragmentManager(), Constants.SETTINGS_DIALOG);
     }

@@ -19,11 +19,12 @@ import enums.EnumDataSourceType;
 import kr.kaist.resl.kitchenhublauncher.R;
 import kr.kaist.resl.kitchenhublauncher.utils.BasicUtils;
 import kr.kaist.resl.kitchenhublauncher.utils.DBUtil;
-import kr.kaist.resl.kitchenhublauncher.utils.ViewUtil;
 import models.DataSource;
 
 /**
  * Created by nicolais on 4/27/15.
+ * <p/>
+ * Dialog to create/delete/update Data Source
  */
 public class EditDatasourceDialog extends Dialog {
 
@@ -32,21 +33,27 @@ public class EditDatasourceDialog extends Dialog {
 
     private DataSource localDataSource;
 
-    public EditDatasourceDialog(Context context, final Runnable postSuccess, DataSource reader) {
+    /**
+     * @param context     context
+     * @param postSuccess Runnable to be run if changes are executed
+     * @param dataSource  data source to be edited. Null will create new data source
+     */
+    public EditDatasourceDialog(Context context, final Runnable postSuccess, DataSource dataSource) {
         super(context);
 
-        localDataSource = reader;
+        localDataSource = dataSource;
 
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        ViewUtil.hideSystemUI(getWindow().getDecorView());
 
         setContentView(R.layout.dialog_datasource_conf);
 
+        // Hide keyboard
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         editText = (EditText) findViewById(R.id.reader_hostname);
         spinner = (Spinner) findViewById(R.id.reader_type);
 
+        // Load data source for editing if provided
         if (localDataSource != null) {
             editText.setText(localDataSource.getIpAddress());
             spinner.post(new Runnable() {
@@ -73,6 +80,11 @@ public class EditDatasourceDialog extends Dialog {
         adapter.setDropDownViewResource(R.layout.spinner_base_dropdown);
         spinner.setAdapter(adapter);
 
+        /**
+         * On accept click
+         * Check entered values.
+         * Save, execute postSuccess and dismiss if values are valid.
+         */
         findViewById(R.id.accept).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,6 +106,7 @@ public class EditDatasourceDialog extends Dialog {
     }
 
 
+    // Data Source type spinner adapter
     class DataSourceAdapter extends ArrayAdapter {
 
         private EnumDataSourceType[] values;

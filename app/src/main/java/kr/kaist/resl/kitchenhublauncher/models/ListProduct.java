@@ -2,6 +2,8 @@ package kr.kaist.resl.kitchenhublauncher.models;
 
 /**
  * Created by NicolaiSonne on 11-06-2015.
+ * <p/>
+ * Model for listing products on home screen
  */
 public class ListProduct {
 

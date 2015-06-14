@@ -18,6 +18,8 @@ import kr.kaist.resl.kitchenhublauncher.utils.ONSUtil;
 
 /**
  * Created by nicolais on 15. 3. 25.
+ * <p/>
+ * System information and debugging
  */
 public class InfoFragment extends Fragment {
 
@@ -35,14 +37,17 @@ public class InfoFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_info, null);
 
+        // Load IP and MAC of wlan0
         TextView tv = (TextView) v.findViewById(R.id.info);
         tv.append(NetworkUtil.getIPAddress(true) + "\n");
         tv.append(NetworkUtil.getMACAddress("wlan0"));
 
+        // Load ONS address
         onsAddrTV = (TextView) v.findViewById(R.id.info_ons_addr);
         String onsAddr = ONSUtil.get(getActivity());
         if (onsAddr != null) onsAddrTV.setText(onsAddr);
 
+        // Change ONS dialog
         v.findViewById(R.id.info_ons_addr_config).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,6 +61,7 @@ public class InfoFragment extends Fragment {
             }
         });
 
+        // Refresh product information button
         v.findViewById(R.id.info_product_info_refresh).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,6 +69,7 @@ public class InfoFragment extends Fragment {
             }
         });
 
+        // Clear product information button
         v.findViewById(R.id.info_product_info_clear).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,6 +81,7 @@ public class InfoFragment extends Fragment {
             }
         });
 
+        // Refresh recall data button
         v.findViewById(R.id.info_recall_refresh).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,6 +89,7 @@ public class InfoFragment extends Fragment {
             }
         });
 
+        // Clear recall data button
         v.findViewById(R.id.info_recall_clear).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,6 +98,7 @@ public class InfoFragment extends Fragment {
             }
         });
 
+        // Clear products button
         v.findViewById(R.id.info_products_clear).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

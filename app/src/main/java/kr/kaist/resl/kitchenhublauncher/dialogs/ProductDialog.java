@@ -12,28 +12,35 @@ import java.util.List;
 import kr.kaist.resl.kitchenhublauncher.R;
 import kr.kaist.resl.kitchenhublauncher.utils.DBUtil;
 import kr.kaist.resl.kitchenhublauncher.utils.UrnUtil;
-import kr.kaist.resl.kitchenhublauncher.utils.ViewUtil;
 import models.AttrContainer;
 import models.Attribute;
 import models.Product;
 
 /**
  * Created by nicolais on 5/5/15.
+ *
+ * Dialog to show product information details
  */
 public class ProductDialog extends Dialog {
 
+    /**
+     *
+     * @param context context
+     * @param productId Primary key of product
+     */
     public ProductDialog(Context context, Integer productId) {
         super(context);
 
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        ViewUtil.hideSystemUI(getWindow().getDecorView());
 
         setContentView(R.layout.dialog_product);
 
+        // Load product
         Product p = DBUtil.getProduct(getContext(), productId);
 
         getWindow().setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT);
 
+        // Load product names
         String itemName = DBUtil.getNameFromUrn(getContext(), UrnUtil.getItemUrn(p));
         ((TextView) findViewById(R.id.item_name)).setText(itemName);
 
@@ -42,11 +49,13 @@ public class ProductDialog extends Dialog {
 
         LinearLayout attrContainer = (LinearLayout) findViewById(R.id.attr_container);
 
+        // Get attributes and attribute containers
         List<AttrContainer> containers = DBUtil.getAttributeContainers(getContext(), p);
         List<Attribute> attributes = DBUtil.getAttributesExcludingName(getContext(), p);
 
         int currentContainer = 0;
         int currentAttr = 0;
+        // Sort by sort order
         for (int i = 0; i < containers.size() + attributes.size(); i++) {
             View child;
             if (currentContainer >= containers.size()) {
@@ -80,6 +89,11 @@ public class ProductDialog extends Dialog {
         return v;
     }
 
+    /**
+     * Load attribute view
+     * @param a attribute
+     * @return
+     */
     private View getAttributeView(Attribute a) {
         View v = null;
         switch (a.getAttrTypeId()) {

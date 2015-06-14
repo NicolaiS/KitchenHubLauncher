@@ -23,6 +23,8 @@ import models.DataSource;
 
 /**
  * Created by nicolais on 15. 3. 25.
+ * <p/>
+ * Configuration tab
  */
 public class ConfigFragment extends Fragment {
 
@@ -40,27 +42,29 @@ public class ConfigFragment extends Fragment {
         readerContainer = (LinearLayout) v.findViewById(R.id.config_reader_container);
         containerContainer = (LinearLayout) v.findViewById(R.id.config_container_container);
 
-        updateContainers();
+        updateLists();
 
+        // Add data source button
         v.findViewById(R.id.config_add_data_source).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 new EditDatasourceDialog(getActivity(), new Runnable() {
                     @Override
                     public void run() {
-                        updateContainers();
+                        updateLists();
                     }
                 }, null).show();
             }
         });
 
+        // Add container button
         v.findViewById(R.id.config_add_container).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 new EditContainerDialog(getActivity(), new Runnable() {
                     @Override
                     public void run() {
-                        updateContainers();
+                        updateLists();
                     }
                 }, null).show();
             }
@@ -69,14 +73,15 @@ public class ConfigFragment extends Fragment {
         return v;
     }
 
-    private void updateContainers() {
+
+    private void updateLists() {
         readerContainer.removeAllViews();
         containerContainer.removeAllViews();
 
         final Runnable postSuccess = new Runnable() {
             @Override
             public void run() {
-                updateContainers();
+                updateLists();
             }
         };
 

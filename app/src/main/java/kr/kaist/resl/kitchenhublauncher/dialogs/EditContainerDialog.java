@@ -25,44 +25,58 @@ import enums.EnumContainerType;
 import kr.kaist.resl.kitchenhublauncher.R;
 import kr.kaist.resl.kitchenhublauncher.utils.BasicUtils;
 import kr.kaist.resl.kitchenhublauncher.utils.DBUtil;
-import kr.kaist.resl.kitchenhublauncher.utils.ViewUtil;
 import models.Container;
 import models.DataSourceContainerRelation;
 
 /**
  * Created by nicolais on 4/27/15.
+ * <p/>
+ * Dialog to create/update/delete containers
  */
 public class EditContainerDialog extends Dialog {
 
+    // Views
     private EditText editText;
     private Spinner spinner;
     private ListView relationList;
 
+    // Adapters
     private ContainerAdapter containerAdapter;
     private RelationAdapter relationAdapter;
 
     private Container localContainer;
 
+    // Current relations
     private List<DataSourceContainerRelation> relations = new ArrayList<DataSourceContainerRelation>();
+
+    // New relations to be added
     private List<DataSourceContainerRelation> tempRelations = new ArrayList<DataSourceContainerRelation>();
+
+    // Relations to be deleted
     private List<DataSourceContainerRelation> relationsToBeDeleted = new ArrayList<DataSourceContainerRelation>();
 
+    /**
+     * @param context     context
+     * @param postSuccess Runnable to be run if changes are executed
+     * @param container   container to be edited. Null will create new container
+     */
     public EditContainerDialog(Context context, final Runnable postSuccess, Container container) {
         super(context);
 
         localContainer = container;
 
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        ViewUtil.hideSystemUI(getWindow().getDecorView());
 
         setContentView(R.layout.dialog_container_conf);
 
+        // Hide keyboard
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         editText = (EditText) findViewById(R.id.container_name);
         spinner = (Spinner) findViewById(R.id.container_type);
         relationList = (ListView) findViewById(R.id.container_ass_readers);
 
+        // Load container for editing if provided
         if (localContainer != null) {
             editText.setText(localContainer.getName());
             spinner.post(new Runnable() {
@@ -94,6 +108,11 @@ public class EditContainerDialog extends Dialog {
         relationAdapter = new RelationAdapter(getContext());
         relationList.setAdapter(relationAdapter);
 
+        /**
+         * On accept click
+         * Check entered values.
+         * Save, execute postSuccess and dismiss if values are valid.
+         */
         findViewById(R.id.accept).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -113,13 +132,13 @@ public class EditContainerDialog extends Dialog {
 
                     postSuccess.run();
                     dismiss();
-                    //TOD save relations
                 } else {
                     Toast.makeText(getContext(), getContext().getString(R.string.error_name), Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
+        // Open dialog to link container to data source.
         findViewById(R.id.config_add_data_source).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -137,6 +156,7 @@ public class EditContainerDialog extends Dialog {
         relationAdapter.notifyDataSetChanged();
     }
 
+    // Container type spinner adapter
     class ContainerAdapter extends ArrayAdapter {
 
         private EnumContainerType[] values;
@@ -186,6 +206,7 @@ public class EditContainerDialog extends Dialog {
 
     }
 
+    // Relations list adapter
     class RelationAdapter extends ArrayAdapter {
 
         private List<DataSourceContainerRelation> values;
@@ -247,6 +268,9 @@ public class EditContainerDialog extends Dialog {
             return values.get(position);
         }
 
+        /**
+         * Sort DataSourceContainerRelation by antenna
+         */
         class SortValues implements Comparator<DataSourceContainerRelation> {
 
             @Override

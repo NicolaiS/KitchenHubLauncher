@@ -90,7 +90,10 @@
     <orderEntry type="library" exported="" name="support-v4-22.0.0" level="project" />
     <orderEntry type="library" exported="" name="commons-validator-1.4.1" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-22.0.0" level="project" />
+    <orderEntry type="library" exported="" name="commons-digester-1.8.1" level="project" />
+    <orderEntry type="library" exported="" name="commons-beanutils-1.8.3" level="project" />
     <orderEntry type="library" exported="" name="khlib" level="project" />
     <orderEntry type="library" exported="" name="org.restlet" level="project" />
+    <orderEntry type="library" exported="" name="commons-collections-3.2.1" level="project" />
   </component>
 </module>

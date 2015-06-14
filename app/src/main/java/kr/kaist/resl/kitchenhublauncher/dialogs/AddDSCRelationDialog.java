@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,26 +20,34 @@ import constants.database.KHSchemaDatasourceContainer;
 import kr.kaist.resl.kitchenhublauncher.R;
 import kr.kaist.resl.kitchenhublauncher.utils.Content_URIs;
 import kr.kaist.resl.kitchenhublauncher.utils.DBUtil;
-import kr.kaist.resl.kitchenhublauncher.utils.ViewUtil;
 import models.Container;
 import models.DataSource;
 import models.DataSourceContainerRelation;
 
 /**
  * Created by nicolais on 4/27/15.
+ * <p/>
+ * Dialog used to link Container and Data Source
  */
 public class AddDSCRelationDialog extends Dialog {
 
+    // Views
     private Spinner spinnerDatasource;
     private Spinner spinnerAntenna;
 
+    // Container to be linked
     private Container localContainer;
 
+    /**
+     * @param context       context
+     * @param postSuccess   Runnable to be executed if container is successfully linked
+     * @param container     Container to be linked
+     * @param tempRelations Set of temporary relations
+     */
     public AddDSCRelationDialog(Context context, final Runnable postSuccess, Container container, final List<DataSourceContainerRelation> tempRelations) {
         super(context);
 
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        ViewUtil.hideSystemUI(getWindow().getDecorView());
 
         setContentView(R.layout.dialog_dsc_create);
 
@@ -54,6 +61,11 @@ public class AddDSCRelationDialog extends Dialog {
         AntennaAdapter antennaAdapter = new AntennaAdapter(getContext());
         spinnerAntenna.setAdapter(antennaAdapter);
 
+        /**
+         * On accept
+         * Save relations, execute postSuccess runnable and dismiss.
+         */
+
         findViewById(R.id.accept).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,9 +78,16 @@ public class AddDSCRelationDialog extends Dialog {
         });
     }
 
+    /**
+     * Check if relations is valid. Meaning data source / antenna pair is not linked to another container and another data source is not linked to relevant container.
+     *
+     * @param dsc relation to be checked
+     * @return True if relation is valid. False if not.
+     */
     private boolean checkRelation(DataSourceContainerRelation dsc) {
         ContentResolver resolver = getContext().getContentResolver();
 
+        // Check if data source / antenna pair is not linked to another container
         String selection = KHSchemaDatasourceContainer.CN_DATA_SOURCE_ID + " = ? AND " + KHSchemaDatasourceContainer.CN_ANTENNA + " = ?";
         String[] selectionArgs = new String[]{Integer.toString(dsc.getDatasource().getId()), Integer.toString(dsc.getAntenna())};
         Cursor c = resolver.query(Content_URIs.CONTENT_URI_DSC, new String[]{KHSchema.CN_ID}, selection, selectionArgs, null);
@@ -80,12 +99,10 @@ public class AddDSCRelationDialog extends Dialog {
         }
         c.close();
 
+        // Check if another data source is not linked to relevant container.
         if (dsc.getContainer() != null) {
             selection = KHSchemaDatasourceContainer.CN_CONTAINER_ID + " = ? AND " + KHSchemaDatasourceContainer.CN_DATA_SOURCE_ID + " != ?";
             selectionArgs = new String[]{Integer.toString(dsc.getContainer().getId()), Integer.toString(dsc.getDatasource().getId())};
-
-            Log.d("HELLO", selection);
-            Log.d("HELLO", selectionArgs[0] + " " + selectionArgs[1]);
 
             c = resolver.query(Content_URIs.CONTENT_URI_DSC, new String[]{KHSchema.CN_ID}, selection, selectionArgs, null);
 
@@ -100,7 +117,7 @@ public class AddDSCRelationDialog extends Dialog {
         return true;
     }
 
-
+    // Data source spinner adapter
     class DataSourceAdapter extends ArrayAdapter {
 
         private List<DataSource> values;
@@ -109,6 +126,7 @@ public class AddDSCRelationDialog extends Dialog {
         public DataSourceAdapter(Context context) {
             super(context, R.layout.spinner_primary, R.id.text);
 
+            // Load data sources
             values = DBUtil.getDataSources(context);
 
             inflater = LayoutInflater.from(context);

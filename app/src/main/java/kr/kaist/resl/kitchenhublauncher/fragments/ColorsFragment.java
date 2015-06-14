@@ -20,6 +20,8 @@ import kr.kaist.resl.kitchenhublauncher.enums.enum_themes;
 
 /**
  * Created by nicolais on 15. 3. 25.
+ * <p/>
+ * Themes fragment/tab
  */
 public class ColorsFragment extends Fragment {
 
@@ -30,7 +32,6 @@ public class ColorsFragment extends Fragment {
         return new ColorsFragment();
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_colors, null);
@@ -39,6 +40,7 @@ public class ColorsFragment extends Fragment {
 
         gridView = (GridView) v.findViewById(R.id.gridview);
         gridView.setAdapter(adapter);
+        // Change theme onClick
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int pos, long id) {
                 enum_themes theme = (enum_themes) adapter.getItem(pos);
@@ -53,7 +55,7 @@ public class ColorsFragment extends Fragment {
         SharedPreferences sPref = getActivity().getSharedPreferences(Constants.SHARED_PREFERENCES_NAME, getActivity().MODE_PRIVATE);
         sPref.edit().putInt(Constants.PREF_THEME_RESID_ID, theme.getThemeId()).commit();
 
-        Intent intent = new Intent(Constants.KH_ACTION_THEME_CHANGED);
+        Intent intent = new Intent(Constants.BROADCAST_THEME_CHANGED);
         getActivity().sendBroadcast(intent);
     }
 

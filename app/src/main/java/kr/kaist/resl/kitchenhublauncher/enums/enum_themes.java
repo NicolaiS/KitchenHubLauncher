@@ -4,6 +4,9 @@ import kr.kaist.resl.kitchenhublauncher.R;
 
 /**
  * Created by nicolais on 15. 3. 25.
+ *
+ * Enumerator for themes.
+ * Linking theme and theme icon
  */
 public enum enum_themes {
     Dark_Red(R.style.KH_Theme_Dark_Red, R.drawable.theme_dark_red),

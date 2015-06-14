@@ -12,10 +12,11 @@ import org.apache.http.conn.util.InetAddressUtils;
 
 import kr.kaist.resl.kitchenhublauncher.R;
 import kr.kaist.resl.kitchenhublauncher.utils.ONSUtil;
-import kr.kaist.resl.kitchenhublauncher.utils.ViewUtil;
 
 /**
  * Created by nicolais on 4/27/15.
+ * <p/>
+ * Dialog for editing ONS address
  */
 public class ONSAddrDialog extends Dialog {
 
@@ -25,16 +26,21 @@ public class ONSAddrDialog extends Dialog {
         super(context);
 
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        ViewUtil.hideSystemUI(getWindow().getDecorView());
 
         setContentView(R.layout.dialog_ons_addr);
 
+        // Hide keyboard
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         et = (EditText) findViewById(R.id.edittext);
         String oldAddr = ONSUtil.get(getContext());
         if (oldAddr != null) et.setText(oldAddr);
 
+        /**
+         * On accept click
+         * Check entered values.
+         * Save, execute postSuccess and dismiss if values are valid.
+         */
         findViewById(R.id.accept).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

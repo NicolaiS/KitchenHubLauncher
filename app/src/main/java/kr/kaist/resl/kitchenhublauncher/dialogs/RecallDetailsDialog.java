@@ -9,11 +9,12 @@ import android.widget.TextView;
 
 import kr.kaist.resl.kitchenhublauncher.R;
 import kr.kaist.resl.kitchenhublauncher.utils.DBUtil;
-import kr.kaist.resl.kitchenhublauncher.utils.ViewUtil;
 import models.Recall;
 
 /**
  * Created by nicolais on 5/5/15.
+ * <p/>
+ * Dialog to show recall details
  */
 public class RecallDetailsDialog extends Dialog {
 
@@ -21,12 +22,12 @@ public class RecallDetailsDialog extends Dialog {
         super(context);
 
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        ViewUtil.hideSystemUI(getWindow().getDecorView());
 
         setContentView(R.layout.dialog_recall_details);
 
         getWindow().setLayout(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT);
 
+        // Load product names
         String[] names = DBUtil.getRecallNames(context, recallId);
         ((TextView) findViewById(R.id.company_name)).setText(names[0]);
         ((TextView) findViewById(R.id.item_name)).setText(names[1]);

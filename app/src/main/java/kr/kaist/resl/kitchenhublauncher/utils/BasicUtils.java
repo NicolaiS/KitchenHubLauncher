@@ -7,6 +7,7 @@ import android.content.Context;
  */
 public class BasicUtils {
 
+    // Get String by resource name
     public static String getStringResourceByName(Context c, String rname) {
         String packageName = c.getPackageName();
         int resId = c.getResources().getIdentifier(rname, "string", packageName);

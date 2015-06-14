@@ -15,6 +15,8 @@ import constants.database.KHSchemaRecall;
 
 /**
  * Created by nicolais on 4/23/15.
+ *
+ * URIs to access Shared Storage module
  */
 public class Content_URIs {
 
