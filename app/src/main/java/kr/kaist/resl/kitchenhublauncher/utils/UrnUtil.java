@@ -1,7 +1,6 @@
 package kr.kaist.resl.kitchenhublauncher.utils;
 
 import android.content.Context;
-import android.util.Log;
 
 import models.Product;
 
@@ -12,8 +11,8 @@ import models.Product;
  */
 public class UrnUtil {
 
-    private static String preSGTIN = "urn:epc:class:sgtin:";
-    private static String preLGTIN = "urn:epc:class:lgtin:";
+    private static final String preSGTIN = "urn:epc:class:sgtin:";
+    private static final String preLGTIN = "urn:epc:class:lgtin:";
 
     /**
      * Generate company URN from Product

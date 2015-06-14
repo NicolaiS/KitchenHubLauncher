@@ -37,9 +37,17 @@ import models.Recall;
 
 /**
  * Created by nicolais on 4/26/15.
+ * <p/>
+ * Util for accessing the Shared Storage module
  */
 public class DBUtil {
 
+    /**
+     * Returns all data sources
+     *
+     * @param context context
+     * @return list of Data Sources
+     */
     public static List<DataSource> getDataSources(Context context) {
         List<DataSource> result = new ArrayList<DataSource>();
 
@@ -64,6 +72,12 @@ public class DBUtil {
         return result;
     }
 
+    /**
+     * Returns all containers
+     *
+     * @param context context
+     * @return list of containers
+     */
     public static List<Container> getContainers(Context context) {
         List<Container> result = new ArrayList<Container>();
 
@@ -88,6 +102,12 @@ public class DBUtil {
         return result;
     }
 
+    /**
+     * Returns all recall notifications
+     *
+     * @param context context
+     * @return list of recall notifications
+     */
     public static List<Recall> getRecallNotifications(Context context) {
         List<Recall> result = new ArrayList<Recall>();
 
@@ -98,7 +118,7 @@ public class DBUtil {
             do {
                 try {
                     Date issueDate = new Date(c.getLong(3));
-                    Boolean accepted = c.getInt(7) > 0 ? true : false;
+                    Boolean accepted = c.getInt(7) > 0;
                     Recall r = new Recall(c.getInt(0), c.getString(1), c.getString(2), issueDate, c.getString(4), c.getString(5), c.getString(6), accepted, c.getInt(8));
                     result.add(r);
                 } catch (Exception e) {
@@ -114,6 +134,13 @@ public class DBUtil {
         return result;
     }
 
+    /**
+     * Request specific recall notification1
+     *
+     * @param context  context
+     * @param recallId primary key of recall notification
+     * @return found recall notification or null
+     */
     public static Recall getRecallNotification(Context context, Integer recallId) {
         Recall r = null;
 
@@ -123,7 +150,7 @@ public class DBUtil {
         if (c.moveToFirst()) {
             try {
                 Date issueDate = new Date(c.getLong(3));
-                Boolean accepted = c.getInt(7) > 0 ? true : false;
+                Boolean accepted = c.getInt(7) > 0;
                 r = new Recall(c.getInt(0), c.getString(1), c.getString(2), issueDate, c.getString(4), c.getString(5), c.getString(6), accepted, c.getInt(8));
             } catch (Exception e) {
                 e.printStackTrace();
@@ -137,16 +164,30 @@ public class DBUtil {
         return r;
     }
 
-    public static void addDataSource(Context context, String hostname, Integer typeId) {
+    /**
+     * Insert data source
+     *
+     * @param context   context
+     * @param ipaddress IP of data source
+     * @param typeId    Type ID of data source
+     */
+    public static void addDataSource(Context context, String ipaddress, Integer typeId) {
         ContentResolver resolver = context.getContentResolver();
 
         ContentValues values = new ContentValues();
-        values.put(KHSchemaDataSource.CN_IP_ADDRESS, hostname);
+        values.put(KHSchemaDataSource.CN_IP_ADDRESS, ipaddress);
         values.put(KHSchemaDataSource.CN_TYPE_ID, typeId);
 
         resolver.insert(Content_URIs.CONTENT_URI_DATA_SOURCE, values);
     }
 
+    /**
+     * Insert container
+     *
+     * @param context context
+     * @param name    Name of container
+     * @param typeId  Type ID of container
+     */
     public static Uri addContainer(Context context, String name, Integer typeId) {
         ContentResolver resolver = context.getContentResolver();
 
@@ -157,6 +198,13 @@ public class DBUtil {
         return resolver.insert(Content_URIs.CONTENT_URI_CONTAINER, values);
     }
 
+    /**
+     * Link container to data sources
+     *
+     * @param context     context
+     * @param containerId Primary key of container
+     * @param relations   Relations of data sources
+     */
     public static void addRelations(Context context, Integer containerId, List<DataSourceContainerRelation> relations) {
         ContentResolver resolver = context.getContentResolver();
 
@@ -169,6 +217,12 @@ public class DBUtil {
         }
     }
 
+    /**
+     * Remove ContainerDataSource relations
+     *
+     * @param context   context
+     * @param relations relations to be deleted
+     */
     public static void deleteRelations(Context context, List<DataSourceContainerRelation> relations) {
         ContentResolver resolver = context.getContentResolver();
         for (DataSourceContainerRelation rc : relations) {
@@ -176,6 +230,14 @@ public class DBUtil {
         }
     }
 
+    /**
+     * Update container
+     *
+     * @param context context
+     * @param id      Primary key of container
+     * @param name    new container name
+     * @param typeId  new container type ID
+     */
     public static void updateContainer(Context context, Integer id, String name, Integer typeId) {
         ContentResolver resolver = context.getContentResolver();
 
@@ -186,16 +248,31 @@ public class DBUtil {
         resolver.update(Content_URIs.CONTENT_URI_CONTAINER, values, KHSchema.CN_ID + " = ?", new String[]{Integer.toString(id)});
     }
 
-    public static void updateDataSource(Context context, Integer id, String hostname, Integer typeId) {
+    /**
+     * Update data source
+     *
+     * @param context   context
+     * @param id        Primary key of data source
+     * @param ipaddress new IP of data source
+     * @param typeId    new type ID of data source
+     */
+    public static void updateDataSource(Context context, Integer id, String ipaddress, Integer typeId) {
         ContentResolver resolver = context.getContentResolver();
 
         ContentValues values = new ContentValues();
-        values.put(KHSchemaDataSource.CN_IP_ADDRESS, hostname);
+        values.put(KHSchemaDataSource.CN_IP_ADDRESS, ipaddress);
         values.put(KHSchemaDataSource.CN_TYPE_ID, typeId);
 
         resolver.update(Content_URIs.CONTENT_URI_DATA_SOURCE, values, KHSchema.CN_ID + " = ?", new String[]{Integer.toString(id)});
     }
 
+    /**
+     * Return data source relations for specific container
+     *
+     * @param context context
+     * @param c       container
+     * @return list of data source relations
+     */
     public static List<DataSourceContainerRelation> getRelatedDataSources(Context context, Container c) {
         List<DataSourceContainerRelation> result = new ArrayList<DataSourceContainerRelation>();
 
@@ -237,13 +314,25 @@ public class DBUtil {
         return result;
     }
 
-    public static void deleteDataSource(Context context, Integer readerId) {
+    /**
+     * Delete data source
+     *
+     * @param context      context
+     * @param dataSourceId Primary key of data source
+     */
+    public static void deleteDataSource(Context context, Integer dataSourceId) {
         ContentResolver resolver = context.getContentResolver();
 
-        resolver.delete(Content_URIs.CONTENT_URI_DSC, KHSchemaDatasourceContainer.CN_DATA_SOURCE_ID + " = ?", new String[]{Integer.toString(readerId)});
-        resolver.delete(Content_URIs.CONTENT_URI_DATA_SOURCE, KHSchema.CN_ID + " = ?", new String[]{Integer.toString(readerId)});
+        resolver.delete(Content_URIs.CONTENT_URI_DSC, KHSchemaDatasourceContainer.CN_DATA_SOURCE_ID + " = ?", new String[]{Integer.toString(dataSourceId)});
+        resolver.delete(Content_URIs.CONTENT_URI_DATA_SOURCE, KHSchema.CN_ID + " = ?", new String[]{Integer.toString(dataSourceId)});
     }
 
+    /**
+     * Delete container
+     *
+     * @param context     context
+     * @param containerId primary key of container
+     */
     public static void deleteContainer(Context context, Integer containerId) {
         ContentResolver resolver = context.getContentResolver();
 
@@ -251,7 +340,13 @@ public class DBUtil {
         resolver.delete(Content_URIs.CONTENT_URI_CONTAINER, KHSchema.CN_ID + " = ?", new String[]{Integer.toString(containerId)});
     }
 
-
+    /**
+     * Get all products marked "present" for specific container
+     *
+     * @param context     context
+     * @param containerId primary key of container. null will return all present products
+     * @return list of present products
+     */
     public static List<Product> getPresentProducts(Context context, Integer containerId) {
         List<Product> results = new ArrayList<Product>();
 
@@ -277,6 +372,13 @@ public class DBUtil {
         return results;
     }
 
+    /**
+     * Get specific product
+     *
+     * @param context   context
+     * @param productId primary key of product
+     * @return Product. null if none is found
+     */
     public static Product getProduct(Context context, Integer productId) {
         Product result = null;
 
@@ -295,6 +397,13 @@ public class DBUtil {
         return result;
     }
 
+    /**
+     * Check if product is recalled
+     *
+     * @param context context
+     * @param p       product to be checked
+     * @return true if product is recalled. false if not.
+     */
     public static boolean isRecalled(Context context, Product p) {
         List<String> urns = new ArrayList<String>(2);
         String itemUrn = UrnUtil.getItemUrn(p);
@@ -316,6 +425,13 @@ public class DBUtil {
         return false;
     }
 
+    /**
+     * Get batch number of product
+     *
+     * @param context context
+     * @param p       product
+     * @return batch number of product. null if none is found.
+     */
     public static String getBatchNo(Context context, Product p) {
         ContentResolver resolver = context.getContentResolver();
         String urn = UrnUtil.getUniqueUrn(p);
@@ -345,6 +461,13 @@ public class DBUtil {
         return result;
     }
 
+    /**
+     * Returns primary key of ProductInfoMeta of URN
+     *
+     * @param context context
+     * @param urn     URN
+     * @return primary key of ProductInfoMeta. null if none is found.
+     */
     public static Integer getProductInfoMetaId(Context context, String urn) {
         ContentResolver resolver = context.getContentResolver();
 
@@ -362,6 +485,13 @@ public class DBUtil {
         return pimId;
     }
 
+    /**
+     * Return all attributes, excluding attributes of type "attr_name", of product
+     *
+     * @param context context
+     * @param product product
+     * @return list of attributes, excluding attributes of type "attr_name"
+     */
     public static List<Attribute> getAttributesExcludingName(Context context, Product product) {
         List<Attribute> results = new ArrayList<Attribute>();
 
@@ -374,6 +504,13 @@ public class DBUtil {
         return results;
     }
 
+    /**
+     * Return all attributes, excluding attributes of type "attr_name", of URN
+     *
+     * @param context context
+     * @param urn     URN
+     * @return list of attributes, excluding attributes of type "attr_name"
+     */
     public static List<Attribute> getAttributesExcludingName(Context context, String urn) {
         List<Attribute> results = new ArrayList<Attribute>();
 
@@ -397,7 +534,13 @@ public class DBUtil {
         return results;
     }
 
-
+    /**
+     * Get all attribute container of product
+     *
+     * @param context context
+     * @param product product
+     * @return list of all attribute containers
+     */
     public static List<AttrContainer> getAttributeContainers(Context context, Product product) {
         List<AttrContainer> results = new ArrayList<AttrContainer>();
 
@@ -410,7 +553,13 @@ public class DBUtil {
         return results;
     }
 
-
+    /**
+     * Get all attribute container of URN
+     *
+     * @param context context
+     * @param urn     URN
+     * @return list of all attribute containers
+     */
     public static List<AttrContainer> getAttributeContainers(Context context, String urn) {
         List<AttrContainer> results = new ArrayList<AttrContainer>();
 
@@ -444,6 +593,13 @@ public class DBUtil {
         return results;
     }
 
+    /**
+     * Look up attribute of type "attr_name" from URN
+     *
+     * @param context context
+     * @param urn     URN
+     * @return URN name. null if none is found
+     */
     public static String getNameFromUrn(Context context, String urn) {
         String name = null;
 
@@ -462,6 +618,13 @@ public class DBUtil {
         return name;
     }
 
+    /**
+     * Get days for which product is to expire
+     *
+     * @param context context
+     * @param p       product
+     * @return days from current time to product expiration. null if none is found.
+     */
     public static Long getDaysTilExpirationFromUrn(Context context, Product p) {
         Long result = null;
 
@@ -496,6 +659,13 @@ public class DBUtil {
         return result;
     }
 
+    /**
+     * Get names of recalled product
+     *
+     * @param context  context
+     * @param recallId primary key of recall notification
+     * @return Array of string. 0 is company name and 1 is item name. Names are null if none are found.
+     */
     public static String[] getRecallNames(Context context, Integer recallId) {
         String[] result = new String[2];
 
@@ -514,6 +684,12 @@ public class DBUtil {
         return result;
     }
 
+    /**
+     * Mark recall accepted
+     *
+     * @param context  context
+     * @param recallId Primary key of recall notification
+     */
     public static void setRecallAccepted(Context context, Integer recallId) {
         ContentResolver resolver = context.getContentResolver();
 
@@ -525,6 +701,9 @@ public class DBUtil {
         resolver.update(Content_URIs.CONTENT_URI_RECALL, values, selection, selectionArgs);
     }
 
+    /**
+     * Sort attributes by sort order
+     */
     static class sortAttributes implements Comparator<Attribute> {
         @Override
         public int compare(Attribute a1, Attribute a2) {
@@ -532,6 +711,9 @@ public class DBUtil {
         }
     }
 
+    /**
+     * Sort attribute containers by sort order
+     */
     static class sortAttrContainer implements Comparator<AttrContainer> {
         @Override
         public int compare(AttrContainer a1, AttrContainer a2) {
